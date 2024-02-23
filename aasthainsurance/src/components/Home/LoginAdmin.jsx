@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function Login() {
+function LoginAdmin() {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -114,16 +114,12 @@ function Login() {
                         </div>
                     </form>
 
-                    <p className="mt-10 text-center text-sm text-gray-500">
-                        Not a member?{' '}
-                        <a href="/register" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
-                            Register
-                        </a>
-                    </p>
+                    {/* Removed registration link for admin login */}
                 </div>
             </div>
         </>
     );
 }
 
-export default Login;
+export default LoginAdmin;
+

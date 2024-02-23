@@ -1,8 +1,8 @@
 import React from 'react';
 
-function PartnerCard({ imageUrl}) {
+function PartnerCard({ name, imageUrl }) {
   return (
-    <div className="flex items-center justify-center flex-col p-4">
+    <div className="flex items-center justify-center flex-col p-4 partner-card">
       <img src={imageUrl} alt={name} className="w-20 h-25 mb-2 object-fit" />
     </div>
   );
@@ -19,7 +19,7 @@ function PartnerSection() {
   ];
 
   return (
-    <div className="flex justify-center flex-wrap gap-4">
+    <div className="flex justify-center flex-wrap gap-4 partner-section" style={{ animation: 'slideRightToLeft 20s linear infinite' }}>
       {partners.map((partner, index) => (
         <PartnerCard key={index} name={partner.name} imageUrl={partner.imageUrl} />
       ))}

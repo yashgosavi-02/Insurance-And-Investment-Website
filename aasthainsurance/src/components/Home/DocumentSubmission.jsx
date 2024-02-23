@@ -108,7 +108,7 @@ function DocumentUpload() {
             </div>
             <button onClick={handleUpload} className="bg-blue-500 text-white py-2 px-4 mt-4 rounded hover:bg-blue-600">Upload</button>
 
-            {/* Display uploaded files */}
+
             {uploadedFiles.length > 0 && (
                 <div className="mt-8">
                     <h2 className="text-xl font-bold mb-4">Uploaded Files</h2>
