@@ -10,8 +10,10 @@ import Contact from './components/Contact/Contact.jsx'
 // import User from './components/User/User.jsx'
 import Products from './components/Products/Products.jsx' 
 import Login from './components/Home/Login.jsx'
-import Register from './components/Home/Register.jsx'
+import Register from './components/Home/RegistrationForm.jsx' 
 import DocumentSubmission from './components/Home/DocumentSubmission.jsx'
+import ProductsRemaining from './components/Products/ProductsRemaining.jsx'
+import AdminDashboard from './components/Admin/AdminDashboard.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +26,8 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register/>}/>
       <Route path='/documentsubmission' element={<DocumentSubmission/>}/>
+      <Route path='/more-products' element={<ProductsRemaining/>}/>
+      <Route path='/admin' element={<AdminDashboard/>}/>
     </Route>
   )
 )

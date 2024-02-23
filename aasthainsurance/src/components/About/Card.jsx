@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import ProductsRemaining from "../Products/ProductsRemaining";
 
 function Card({ title, imgsrc }) {
   return (
@@ -12,7 +13,7 @@ function Card({ title, imgsrc }) {
         </p>
       </div>
       <div className="px-6 pt-4 pb-2">
-        <NavLink to="/contact" className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
+        <NavLink to="/more-products" className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
           Know More
         </NavLink>
       </div>
