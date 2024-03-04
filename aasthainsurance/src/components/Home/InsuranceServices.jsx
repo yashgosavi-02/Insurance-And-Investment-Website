@@ -1,0 +1,44 @@
+import React from 'react';
+import { IonIcon } from '@ionic/react';
+import homeImage from '../Images/homeImage.png'
+import autoImage from '../Images/autoImage.png';
+import travelImage from '../Images/travelImage.png'
+import lifeImage from '../Images/lifeImage.png';
+import kidcareImage from '../Images/kidcareImage.png';
+import healthImage from '../Images/healthImage.png'
+
+
+function InsuranceServices() {
+  return (
+    <section className="our-services py-16 bg-white">
+      <div className="container mx-auto">
+        <h4 className="sub-heading text-center text-3xl mb-8">Services We Provide</h4>
+        <h2 className="heading text-center text-4xl font-bold mb-12">Insurance Solutions</h2>
+        <p className="para-line text-center text-lg mb-12">
+          Our comprehensive insurance solutions are meticulously crafted to address your unique needs and offer unparalleled protection. From safeguarding your assets to securing your family's future, trust in our expertise for peace of mind.
+        </p>
+        <div className="services grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <ServiceCard imageUrl={homeImage} title="Home" description="Secure your home with our comprehensive insurance coverage, tailored to protect your property and belongings." />
+          <ServiceCard imageUrl={autoImage} title="Auto" description="Drive with confidence knowing you're covered by our reliable auto insurance, offering protection on the road." />
+          <ServiceCard imageUrl={travelImage} title="Travel" description="Explore the world worry-free with our travel insurance, providing peace of mind for your adventures." />
+          <ServiceCard imageUrl={lifeImage} title="Life" description="Ensure your loved ones' future with our life insurance solutions, offering financial security and support." />
+          <ServiceCard imageUrl={kidcareImage} title="KidCare" description="Protect your child's well-being with our KidCare insurance, prioritizing their health and happiness." />
+          <ServiceCard imageUrl={healthImage} title="Health" description="Stay healthy and secure with our health insurance plans, providing coverage for your medical needs." />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServiceCard({ imageUrl, title, description }) {
+  return (
+    <div className="service bg-white rounded-lg p-8  text-center flex flex-col justify-center items-center">
+      <img src={imageUrl} alt={title} className="service-image mb-4" style={{ width: '100px', height: '100px' }} />
+      <h2 className="service-heading text-xl font-semibold mb-4">{title}</h2>
+      <p className="para-line text-lg">{description}</p>
+    </div>
+  );
+}
+
+
+export default InsuranceServices;

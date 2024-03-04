@@ -1,7 +1,12 @@
 import React from 'react'
+import thumbsup from '../Images/thumbsup.png';
+import wallet from '../Images/wallet.png';
+import online from '../Images/online.png';
+import team from '../Images/team.png';
 
 function About() {
     return (
+      <>
         <div className="py-16 bg-white">
           <div className="container mx-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
@@ -26,6 +31,48 @@ function About() {
             </div>
           </div>
         </div>
+         <div>
+         {/* Company Values */}
+         <section className="valuespy-16">
+             <div className="container mx-auto">
+                 <h4 className="sub-heading"></h4>
+                 <h2 className="heading text-3xl font-bold mb-8 text-center">Company Highlights</h2>
+                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                 <div className="highlight text-center">
+    <img src={thumbsup} className="mx-auto" />
+    <h3 className="highlight-heading text-xl font-semibold mt-4">24x7 Support</h3>
+    <p className="para-line mt-2">
+        Our firm offers 24x7 support, ensuring assistance anytime, anywhere.
+    </p>
+</div>
+<div className="highlight text-center">
+    <img src={wallet} className="mx-auto" />
+    <h3 className="highlight-heading text-xl font-semibold mt-4">Financial Advising</h3>
+    <p className="para-line mt-2">
+        We provide expert financial advising to help clients achieve their goals.
+    </p>
+</div>
+<div className="highlight text-center">
+    <img src={online} className="mx-auto" />
+    <h3 className="highlight-heading text-xl font-semibold mt-4">Online Assistant</h3>
+    <p className="para-line mt-2">
+        Our online assistant streamlines processes, offering convenience and efficiency.
+    </p>
+</div>
+<div className="highlight text-center">
+    <img src={team} className="mx-auto" />
+    <h3 className="highlight-heading text-xl font-semibold mt-4">Best Agents</h3>
+    <p className="para-line mt-2">
+        We have the best agents dedicated to serving clients' needs effectively.
+    </p>
+</div>
+
+                 </div>
+             </div>
+         </section>
+
+     </div>
+     </>
       );
 }
 

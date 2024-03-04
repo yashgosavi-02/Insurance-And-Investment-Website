@@ -22,21 +22,18 @@ function Contact() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            axios.post('http://your-backend-url/api/submitForm', formData)
-                .then(response => {
-                    console.log("Form submitted successfully:", response.data);
-                    setFormData({
-                        name: '',
-                        email: '',
-                        tel: '',
-                        message: ''
-                    });
-                })
-                .catch(error => {
-                    console.error("Error submitting form:", error);
-                });
+            const { name, email, tel, message } = formData;
+            const mailtoLink = `mailto:yashgosavi.cse@gmail.com?subject=New Request&body=Name: ${name}%0AEmail: ${email}%0ATelephone: ${tel}%0AMessage: ${message}`;
+            window.location.href = mailtoLink;
+            setFormData({
+                name: '',
+                email: '',
+                tel: '',
+                message: ''
+            });
         }
     };
+    
 
     const validateForm = () => {
         let valid = true;
@@ -74,7 +71,7 @@ function Contact() {
 
     return (
         <div className="min-h-screen flex justify-center items-center">
-            <div className="max-w-3xl w-full space-y-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg p-8">
+            <div className="max-w-3xl w-full space-y-8 bg-white dark:bg-gray-800  sm:rounded-lg p-8">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Get in touch:</h2>
                 <p className="text-lg text-gray-600 dark:text-gray-400">Fill in the form to start a conversation</p>
 

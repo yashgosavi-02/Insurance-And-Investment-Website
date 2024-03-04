@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '../Images/aastha-logo.png';
 
 export default function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -13,24 +14,25 @@ export default function Header() {
     };
 
     return (
-        <header className="bg-white shadow sticky top-0 z-50">
+        <header className="bg-gray-100 shadow sticky top-0 z-50">
             <nav className="container mx-auto px-4 lg:px-6 py-3 flex justify-between items-center">
                 <div className="flex items-center">
                     <Link to="/" className="flex items-center">
                         <img
-                            src="https://img.freepik.com/premium-photo/adoption-community-care-logo-template_1948-20952.jpg?size=626&ext=jpg&ga=GA1.1.1304262724.1708581590&semt=ais"
-                            className="h-20"
+                            src={logo}
+                            className="h-16 lg:h-20"
                             alt="Logo"
                         />
-                        <h2 className="font-mono text-2xl font-bold text-gray-800 ml-3">Aastha Insurance & Investments</h2>
+                        <h2 className="font-mono text-lg lg:text-2xl font-bold text-gray-800 ml-3">Aastha Insurance & Investments</h2>
                     </Link>
-                    <ul className="hidden lg:flex space-x-8 ml-8">
+                    <ul className={`lg:flex space-x-8 ml-8 ${isDropdownOpen ? 'block' : 'hidden'}`}>
                         <li>
                             <NavLink
                                 to="/"
                                 exact
                                 activeClassName="text-orange-700"
                                 className="text-gray-700 hover:text-orange-700"
+                                onClick={closeDropdown}
                             >
                                 Home
                             </NavLink>
@@ -40,6 +42,7 @@ export default function Header() {
                                 to="/about"
                                 activeClassName="text-orange-700"
                                 className="text-gray-700 hover:text-orange-700"
+                                onClick={closeDropdown}
                             >
                                 About
                             </NavLink>
@@ -49,23 +52,21 @@ export default function Header() {
                                 to="/contact"
                                 activeClassName="text-orange-700"
                                 className="text-gray-700 hover:text-orange-700"
+                                onClick={closeDropdown}
                             >
                                 Contact
                             </NavLink>
                         </li>
-                        <li
-                            className="relative"
-                            onMouseEnter={toggleDropdown}
-                            onMouseLeave={closeDropdown}
-                        >
+                        <li className="relative" onMouseEnter={toggleDropdown} onMouseLeave={closeDropdown}>
                             <NavLink
                                 to="/insurance"
                                 className="text-gray-700 hover:text-orange-700 cursor-pointer"
+                                onClick={closeDropdown}
                             >
                                 Products
                             </NavLink>
                             {isDropdownOpen && (
-                                <ul className="absolute bg-white border border-gray-200 py-2 mt-2 w-40">
+                                <ul className="absolute bg-white border border-gray-200 py-2 mt-2 w-40 rounded-lg shadow-lg">
                                     <li>
                                         <NavLink
                                             to="/products/plans"
@@ -99,18 +100,12 @@ export default function Header() {
                     </ul>
                 </div>
                 <div>
-                    <Link
-                        to="/DocumentSubmission"
-                        className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+                    <Link 
+                        to="/buypolicy"
+                        className='text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none '
                     >
-                        Submit Documents
+                        Buy Policy
                     </Link>
-                    <NavLink
-                        to="/login"
-                        className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 focus:outline-none"
-                    >
-                        Login
-                    </NavLink>
                 </div>
             </nav>
         </header>

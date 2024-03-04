@@ -1,6 +1,11 @@
 import React from "react";
-import Card from "../About/Card";
-
+import Card from "./Card";
+import homeImage from '../Images/homeImage.png'
+import autoImage from '../Images/autoImage.png';
+import travelImage from '../Images/travelImage.png'
+import lifeImage from '../Images/lifeImage.png';
+import kidcareImage from '../Images/kidcareImage.png';
+import healthImage from '../Images/healthImage.png'
 function Products() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -8,27 +13,39 @@ function Products() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <Card
           title="Life Insurance"
-          imgsrc="https://img.freepik.com/free-photo/life-insurance-policy-terms-use-concept_53876-125102.jpg?size=626&ext=jpg&ga=GA1.1.1304262724.1708581590&semt=ais"
+          imgsrc={lifeImage}
+          desc="Ensure your loved ones' future with our life insurance solutions, offering financial security and support."
+          linktopage='/products/life'
         />
         <Card
           title="Health Insurance"
-          imgsrc="https://img.freepik.com/free-photo/life-health-insurance-policy-concept-idea_1421-83.jpg?size=626&ext=jpg&ga=GA1.1.1304262724.1708581590&semt=ais"
+          imgsrc={healthImage}
+          desc="Stay healthy and secure with our health insurance plans, providing coverage for your medical needs."
+          linktopage='/products/life'
         />
         <Card
-          title="Vehicle Insurance"
-          imgsrc="https://img.freepik.com/free-photo/car-insurance-coverage-accident-benefits_53876-120417.jpg?size=626&ext=jpg&ga=GA1.1.1304262724.1708581590&semt=ais"
+          title="Auto Insurance"
+          imgsrc={autoImage}
+          desc="Drive with confidence knowing you're covered by our reliable auto insurance, offering protection on the road."
+          linktopage='/products/life'
         />
         <Card
-          title="Insurace"
-          imgsrc="https://img.freepik.com/premium-photo/cork-board-with-list-insurance-car-car-transportation_777576-1643.jpg?size=626&ext=jpg&ga=GA1.1.1304262724.1708581590&semt=ais"
+          title="KidCare Insurance"
+          imgsrc={kidcareImage}
+          desc="Protect your child's well-being with our KidCare insurance, prioritizing their health and happiness."
+          linktopage='/products/life'
         />
         <Card
-          title="Insurance"
-          imgsrc="https://img.freepik.com/premium-photo/cork-board-with-list-insurance-car-car-transportation_777576-1643.jpg?size=626&ext=jpg&ga=GA1.1.1304262724.1708581590&semt=ais"
+          title="Home Insurance"
+          imgsrc={homeImage}
+          desc="Secure your home with our comprehensive insurance coverage, tailored to protect your property and belongings."
+          linktopage='/products/life'
         />
         <Card
-          title="Insurance"
-          imgsrc="https://img.freepik.com/premium-photo/cork-board-with-list-insurance-car-car-transportation_777576-1643.jpg?size=626&ext=jpg&ga=GA1.1.1304262724.1708581590&semt=ais"
+          title="Travel Insurance"
+          imgsrc={travelImage}
+          desc="Explore the world worry-free with our travel insurance, providing peace of mind for your adventures."
+          linktopage='/products/life'
         />
       </div>
     </div>

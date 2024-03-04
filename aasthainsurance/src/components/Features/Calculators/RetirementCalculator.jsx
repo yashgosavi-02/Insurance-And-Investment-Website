@@ -1,78 +1,59 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useState } from 'react';
 
-const RetirementCalculator = () => {
-  const [currentAge, setCurrentAge] = useState(0);
-  const [retirementAge, setRetirementAge] = useState(0);
-  const [monthlySavings, setMonthlySavings] = useState(0);
-  const [annualReturn, setAnnualReturn] = useState(0);
-  const [results, setResults] = useState(null);
-  const chartRef = useRef(null);
+function RetirementCalculator() {
+    const [currentAge, setCurrentAge] = useState(0);
+    const [retirementAge, setRetirementAge] = useState(0);
+    const [annualExpenses, setAnnualExpenses] = useState(0);
+    const [annualReturnRate, setAnnualReturnRate] = useState(0);
+    const [retirementCorpus, setRetirementCorpus] = useState(0);
 
-  const calculate = () => {
-    // Your retirement calculation logic here
-    // For simplicity, let's assume a basic calculation
-    const yearsToRetirement = retirementAge - currentAge;
-    const totalSavings = monthlySavings * 12 * yearsToRetirement;
-    const totalInterest = totalSavings * (Math.pow(1 + annualReturn / 100, yearsToRetirement) - 1);
-    const totalAmount = totalSavings + totalInterest;
+    const calculateRetirementCorpus = () => {
+        const yearsToRetirement = retirementAge - currentAge;
 
-    // Create Chart
-    const labels = Array.from({ length: yearsToRetirement + 1 }, (_, i) => currentAge + i);
-    const data = Array.from({ length: yearsToRetirement + 1 }, (_, i) =>
-      (monthlySavings * 12) * (i) + (monthlySavings * 12 * (i) * (annualReturn / 100))
-    );
+        // Convert annual expenses to yearly
+        const yearlyExpenses = annualExpenses;
 
-    const ctx = chartRef.current.getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Retirement Savings',
-          data: data,
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1,
-        }]
-      },
-    });
+        // Convert annual return rate to yearly
+        const yearlyRate = annualReturnRate / 100;
 
-    setResults({ totalAmount });
-  };
+        // Calculate the future value of yearly expenses during retirement
+        const futureValueExpenses = yearlyExpenses * Math.pow(1 + yearlyRate, yearsToRetirement);
 
-  useEffect(() => {
-    if (results) {
-      calculate();
-    }
-  }, [results]);
+        // Calculate the retirement corpus needed
+        const corpusNeeded = futureValueExpenses;
 
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <h2 className="text-xl font-semibold mb-4">Retirement Calculator</h2>
-      <div className="flex flex-col items-center space-y-4">
-        <label htmlFor="currentAge">Current Age</label>
-        <input type="number" value={currentAge} onChange={(e) => setCurrentAge(Number(e.target.value))} id="currentAge" className="input" />
+        setRetirementCorpus(corpusNeeded.toFixed(2));
+    };
 
-        <label htmlFor="retirementAge">Retirement Age</label>
-        <input type="number" value={retirementAge} onChange={(e) => setRetirementAge(Number(e.target.value))} id="retirementAge" className="input" />
-
-        <label htmlFor="monthlySavings">Monthly Savings</label>
-        <input type="number" value={monthlySavings} onChange={(e) => setMonthlySavings(Number(e.target.value))} id="monthlySavings" className="input" />
-
-        <label htmlFor="annualReturn">Annual Return (%)</label>
-        <input type="number" value={annualReturn} onChange={(e) => setAnnualReturn(Number(e.target.value))} id="annualReturn" className="input" />
-
-        <button onClick={calculate}>Calculate</button>
-      </div>
-
-      {results && (
-        <div>
-          <canvas ref={chartRef}></canvas>
+    return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+            <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-3/4 lg:w-2/3 xl:w-1/2">
+                <h2 className="text-2xl font-bold mb-4">Retirement Calculator</h2>
+                <div className="mb-4">
+                    <label className="block mb-2">Current Age:</label>
+                    <input className="border rounded px-2 py-1 w-40" type="number" value={currentAge} onChange={e => setCurrentAge(parseInt(e.target.value))} />
+                </div>
+                <div className="mb-4">
+                    <label className="block mb-2">Desired Retirement Age:</label>
+                    <input className="border rounded px-2 py-1 w-40" type="number" value={retirementAge} onChange={e => setRetirementAge(parseInt(e.target.value))} />
+                </div>
+                <div className="mb-4">
+                    <label className="block mb-2">Annual Expenses During Retirement (₹):</label>
+                    <input className="border rounded px-2 py-1 w-40" type="number" value={annualExpenses} onChange={e => setAnnualExpenses(parseFloat(e.target.value))} />
+                </div>
+                <div className="mb-4">
+                    <label className="block mb-2">Expected Annual Return Rate (%):</label>
+                    <input className="border rounded px-2 py-1 w-40" type="number" value={annualReturnRate} onChange={e => setAnnualReturnRate(parseFloat(e.target.value))} />
+                </div>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={calculateRetirementCorpus}>Calculate Retirement Corpus</button>
+                {retirementCorpus > 0 && (
+                    <div className="mt-4">
+                        <p className="font-bold">You need a retirement corpus of ₹{retirementCorpus}</p>
+                    </div>
+                )}
+            </div>
         </div>
-      )}
-    </div>
-  );
-};
+    );
+}
 
 export default RetirementCalculator;

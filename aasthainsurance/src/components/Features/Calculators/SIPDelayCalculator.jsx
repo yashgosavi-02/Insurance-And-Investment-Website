@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-function SIPCalculator() {
+function SIPDelayCalculator() {
     const [monthlyInvestment, setMonthlyInvestment] = useState(0);
     const [annualReturnRate, setAnnualReturnRate] = useState(0);
     const [investmentDuration, setInvestmentDuration] = useState(0);
+    const [delayPeriod, setDelayPeriod] = useState(0);
     const [investmentData, setInvestmentData] = useState([]);
 
     const calculateMaturityAmount = () => {
@@ -12,7 +13,7 @@ function SIPCalculator() {
         let totalAmount = 0;
         const data = [];
 
-        for (let i = 2024; i <= (2024 + investmentDuration - 1); i++) {
+        for (let i = 2024 + delayPeriod; i <= (2024 + investmentDuration - 1); i++) {
             const yearInvestment = monthlyInvestment * 12;
             investedAmount += yearInvestment * Math.pow(1 + monthlyRate, (i - 2024));
             const returns = investedAmount * (Math.pow(1 + monthlyRate, 12) - 1);
@@ -25,7 +26,7 @@ function SIPCalculator() {
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-3/4 lg:w-2/3 xl:w-1/2">
-                <h2 className="text-2xl font-bold mb-4">SIP Calculator</h2>
+                <h2 className="text-2xl font-bold mb-4">SIP Delay Calculator</h2>
                 <div className="mb-4">
                     <label className="block mb-2">Monthly Investment Amount (₹):</label>
                     <input className="border rounded px-2 py-1 w-40" type="number" value={monthlyInvestment} onChange={e => setMonthlyInvestment(parseFloat(e.target.value))} />
@@ -37,6 +38,10 @@ function SIPCalculator() {
                 <div className="mb-4">
                     <label className="block mb-2">Investment Duration (years):</label>
                     <input className="border rounded px-2 py-1 w-40" type="number" value={investmentDuration} onChange={e => setInvestmentDuration(parseInt(e.target.value))} />
+                </div>
+                <div className="mb-4">
+                    <label className="block mb-2">Delay Period (years):</label>
+                    <input className="border rounded px-2 py-1 w-40" type="number" value={delayPeriod} onChange={e => setDelayPeriod(parseInt(e.target.value))} />
                 </div>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={calculateMaturityAmount}>Calculate Maturity Amount</button>
                 {investmentData.length > 0 && (
@@ -68,4 +73,4 @@ function SIPCalculator() {
     );
 }
 
-export default SIPCalculator;
+export default SIPDelayCalculator;

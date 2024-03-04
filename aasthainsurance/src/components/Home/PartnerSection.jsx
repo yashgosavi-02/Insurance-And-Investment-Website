@@ -1,28 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import licImage from '../Images/lic.png';
+import iciciImage from '../Images/icici.png';
+import orientalImage from '../Images/oriental.png';
+import tataImage from '../Images/tata.png';
+import starImage from '../Images/star.png';
+import hdfcImage from '../Images/hdfc.png';
 
-function PartnerCard({ name, imageUrl }) {
+function PartCard({ name, imageUrl, to }) {
   return (
-    <div className="flex items-center justify-center flex-col p-4 partner-card">
-      <img src={imageUrl} alt={name} className="w-20 h-25 mb-2 object-fit" />
+    <div className="inline-block w-32 h-40 mx-2 overflow-hidden relative">
+      <Link to={to} className="block w-full h-full absolute inset-0">
+        <img src={imageUrl} alt={name} className="w-full h-full object-contain" />
+      </Link>
     </div>
   );
 }
 
 function PartnerSection() {
   const partners = [
-    { name: 'LIC', imageUrl: 'https://presentations.gov.in/wp-content/uploads/2020/06/Perview-2.png?x93559' },
-    { name: 'ICICI', imageUrl: 'https://cionews.co.in/wp-content/uploads/2023/11/Article-Main-Image-7.png' },
-    { name: 'Oriental', imageUrl: 'https://api.indianmandarins.com/public/blogImages/OIC_logo.png' },
-    { name: 'Tata', imageUrl: 'https://content.jdmagicbox.com/comp/delhi/32/011pk007832/catalogue/tata-aia-life-insurance-company-ltd-rohini-sector-3-delhi-insurance-companies-hm0v7i23ld.jpg' },
-    { name: 'Star', imageUrl: 'https://www.starhealth.in/img/star-health-logo.png' },
-    { name: 'HDFC', imageUrl: 'https://www.hdfcergo.com/images/default-source/home/logo_hdfc.svg' },
+    { name: 'LIC', imageUrl: licImage, to: 'https://licindia.in/web/guest/about-us' },
+    { name: 'ICICI', imageUrl: iciciImage, to: 'https://www.icicilombard.com/about-us' },
+    { name: 'Oriental', imageUrl: orientalImage, to: 'https://orientalinsurance.org.in/en/profile?isSelected=aboutUs&isRefresh=true' },
+    { name: 'Tata', imageUrl: tataImage, to: 'https://www.tataaia.com/about-us.html' },
+    { name: 'Star', imageUrl: starImage, to: 'https://www.starhealth.in/about-us/' },
+    { name: 'HDFC', imageUrl: hdfcImage, to: 'https://www.hdfcergo.com/about-us/about-company' },
   ];
 
   return (
-    <div className="flex justify-center flex-wrap gap-4 partner-section" style={{ animation: 'slideRightToLeft 20s linear infinite' }}>
-      {partners.map((partner, index) => (
-        <PartnerCard key={index} name={partner.name} imageUrl={partner.imageUrl} />
-      ))}
+    <div className="container mx-auto">
+      <div className="text-center">
+        {partners.map((partner, index) => (
+          <PartCard key={index} name={partner.name} imageUrl={partner.imageUrl} to={partner.to} />
+        ))}
+      </div>
     </div>
   );
 }
