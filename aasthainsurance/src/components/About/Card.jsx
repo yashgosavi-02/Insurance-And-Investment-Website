@@ -1,6 +1,4 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
-import ProductsRemaining from "../Products/ProductsRemaining";
 
 function Card({ title, imgsrc }) {
   return (
@@ -9,11 +7,15 @@ function Card({ title, imgsrc }) {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p className="text-gray-700 text-base">
-          Some quick example text to build on the card title and make up the bulk of the card's content.
+          Some quick example text to build on the card title and make up the
+          bulk of the card&quot;s content.
         </p>
       </div>
       <div className="px-6 pt-4 pb-2">
-        <NavLink to="/more-products" className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2">
+        <NavLink
+          to="/more-products"
+          className="inline-block bg-blue-500 rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
+        >
           Know More
         </NavLink>
       </div>

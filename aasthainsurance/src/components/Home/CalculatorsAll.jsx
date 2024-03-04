@@ -1,5 +1,4 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function CalCard({ name, imageUrl, to }) {
   return (
@@ -16,12 +15,42 @@ function CalCard({ name, imageUrl, to }) {
 
 function CalculatorAll() {
   const partners = [
-    { name: 'SIP', imageUrl: 'https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740', to: '/calculator/sip-calculator' },
-    { name: 'Retirement', imageUrl: 'https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740', to: '/calculator/retirement-calculator' },
-    { name: 'Other', imageUrl: 'https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740', to: '/calculator/other-calculator' },
-    { name: 'SIP', imageUrl: 'https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740', to: '/calculator/sip-calculator' },
-    { name: 'Retirement', imageUrl: 'https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740', to: '/calculator/retirement-calculator' },
-    { name: 'Other', imageUrl: 'https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740', to: '/calculator/other-calculator' },
+    {
+      name: "SIP",
+      imageUrl:
+        "https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740",
+      to: "/calculator/sip-calculator",
+    },
+    {
+      name: "Retirement",
+      imageUrl:
+        "https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740",
+      to: "/calculator/retirement-calculator",
+    },
+    {
+      name: "Other",
+      imageUrl:
+        "https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740",
+      to: "/calculator/other-calculator",
+    },
+    {
+      name: "SIP",
+      imageUrl:
+        "https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740",
+      to: "/calculator/sip-calculator",
+    },
+    {
+      name: "Retirement",
+      imageUrl:
+        "https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740",
+      to: "/calculator/retirement-calculator",
+    },
+    {
+      name: "Other",
+      imageUrl:
+        "https://img.freepik.com/free-vector/coins-calculator-background-piggy-bank_23-2147631739.jpg?t=st=1708590410~exp=1708594010~hmac=b7fbe80f4aebe6abbada70e9c007855b3524c3e973ae976e2d013b5ccd7ac06e&w=740",
+      to: "/calculator/other-calculator",
+    },
   ];
 
   return (
@@ -35,18 +64,19 @@ function CalculatorAll() {
         </h1>
       </div>
       <div className="container mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {partners.map((partner, index) => (
-          <CalCard key={index} name={partner.name} imageUrl={partner.imageUrl} to={partner.to} />
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {partners.map((partner, index) => (
+            <CalCard
+              key={index}
+              name={partner.name}
+              imageUrl={partner.imageUrl}
+              to={partner.to}
+            />
+          ))}
+        </div>
       </div>
-    </div>
     </section>
   );
 }
 
 export default CalculatorAll;
-
-
-
-
