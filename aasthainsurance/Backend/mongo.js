@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 
 //Connecting Database
-mongoose.connect(
-  "mongodb+srv://Aadarsh19:z92qD2te9eYXJiJ@cluster.ptwnszy.mongodb.net/IandIdatabase"
-);
+mongoose.connect();
 
 //User Schema
 
