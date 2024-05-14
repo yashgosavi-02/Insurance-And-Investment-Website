@@ -24,7 +24,7 @@ import LoginUser from "./temp/LoginUser.jsx";
 import ForgetPassword from "./temp/ForgetPassword.jsx";
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
 import TermsConditions from './components/Footer/TermsConditions.jsx';
-
+import Cart from "./components/Home/Cart.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
@@ -61,6 +61,7 @@ const router = createBrowserRouter(
       <Route path="/forgetPassword" element={<ForgetPassword/>}/>
       <Route path="/terms-conditions" element={<TermsConditions/>} />
       <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+      <Route path="/cart" element={<Cart />} />
     </Route>
   )
 );

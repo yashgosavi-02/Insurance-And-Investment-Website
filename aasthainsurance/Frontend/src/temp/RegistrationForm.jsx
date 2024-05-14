@@ -22,13 +22,13 @@ function RegistrationForm() {
             [name]: value
         }));
     };
-
+    console.log(formData);
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (validateForm()) {
             setIsLoading(true);
             try {
-                console.log("Submitted");
+                //
 
             } catch (error) {
                 console.error("Error submitting form:", error.response.data);
@@ -55,13 +55,13 @@ function RegistrationForm() {
             valid = false;
         }
     
-        if (!formData.phoneNo.trim()) {
-            newErrors.phoneNo = "Phone No. is required";
-            valid = false;
-        } else if (!/^\d{10}$/.test(formData.phoneNo.trim())) {
-            newErrors.phoneNo = "Phone No. must be 10 digits";
-            valid = false;
-        }
+        // if (!formData.phoneNo.trim()) {
+        //     newErrors.phoneNo = "Phone No. is required";
+        //     valid = false;
+        // } else if (!/^\d{10}$/.test(formData.phoneNo.trim())) {
+        //     newErrors.phoneNo = "Phone No. must be 10 digits";
+        //     valid = false;
+        // }
     
         if (!formData.dob.trim()) {
             newErrors.dob = "Date of Birth is required";

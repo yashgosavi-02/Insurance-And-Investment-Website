@@ -55,6 +55,9 @@ export default function Header() {
             <li>
               <Link to="/contact" className="text-textC" onClick={closeDropdown}>Contact</Link>
             </li>
+            <li>
+              <Link to="/cart" className="text-textC" onClick={closeDropdown}>Cart</Link>
+            </li>
           </ul>
           <Link to="/userLogin" className="text-textC text-xl">
             <BiSolidLogIn />

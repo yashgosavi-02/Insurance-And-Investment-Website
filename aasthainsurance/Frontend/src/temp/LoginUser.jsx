@@ -23,10 +23,8 @@ function LoginUser() {
             try {
                 const response = await axios.post('backend/login', formData);
                 console.log('Login successful:', response.data);
-                // Handle successful login (e.g., store token in local storage, redirect user)
             } catch (error) {
                 console.error('Login failed:', error);
-                // Handle login failure (e.g., display error message to the user)
             }
         }
     };

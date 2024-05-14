@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [welcomeTextIndex, setWelcomeTextIndex] = useState(0);
   const welcomeTexts = [
-    "Welcome to Our Website",
+    "Welcome to Aastha",
     "Explore Our Services",
     "Secure Your Future Today"
   ];
