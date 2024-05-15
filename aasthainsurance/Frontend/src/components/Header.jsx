@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../Images/logo.png";
+import logo from '../assets/images/logo.png';
 import { BiSolidLogIn } from "react-icons/bi";
 
 export default function Header() {
@@ -59,7 +59,7 @@ export default function Header() {
               <Link to="/cart" className="text-textC" onClick={closeDropdown}>Cart</Link>
             </li>
           </ul>
-          <Link to="/userLogin" className="text-textC text-xl">
+          <Link to="/login" className="text-textC text-xl">
             <BiSolidLogIn />
           </Link>
         </div>

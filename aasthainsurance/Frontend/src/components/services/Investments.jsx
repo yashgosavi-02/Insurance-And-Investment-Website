@@ -1,12 +1,11 @@
-import mutualFund from "../Images/MutualFunds.jpg";
-
+import imagesImports from "../../utils/imgImports";
 function Investments() {
   return (
     <div className="py-16 bg-bodyC">
       <div className="container mx-auto px-6 text-textC md:px-12 xl:px-6">
         <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
           <div className="md:w-5/12 lg:w-5/12">
-            <img className="w-full h-auto" src={mutualFund} alt="image" />
+            <img className="w-full h-auto" src={imagesImports.companyImg} alt="image" />
           </div>
           <div className="md:w-7/12 lg:w-6/12">
             <h2 className="text-2xl text-textC font-bold md:text-4xl">

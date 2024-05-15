@@ -1,12 +1,5 @@
 import { Link } from "react-router-dom"; // Assuming you're using React Router for navigation
-import ulip from "../Images/plans/ulip.jpg";
-import whole from "../Images/plans/whole.jpg";
-import retire from "../Images/plans/retirement.jpg";
-import pure from "../Images/plans/pureprotection.jpg";
-import moneyback from "../Images/plans/moneyback.jpg";
-import endplan from "../Images/plans/EndPlan.jpg";
-import childplan from "../Images/plans/childplan.jpg";
-import health from "../Images/plans/health.jpg";
+import imagesImports from "../../utils/imgImports";
 function PlansCard({ name, imageUrl, role, to }) {
   return (
     <div className="max-w-xs mx-4 rounded overflow-hidden shadow-lg bg-headerC">
@@ -41,56 +34,56 @@ function FinConsultancy() {
       id: 1,
       name: "Endownment Plan",
       role: "Click to know more",
-      image: endplan,
+      image: imagesImports.endplan,
       to: "/plans/planName",
     },
     {
       id: 2,
       name: "Children Protection Plan",
       role: "Click to know more",
-      image: childplan,
+      image: imagesImports.childplan,
       to: "/plans/planName",
     },
     {
       id: 3,
       name: "Whole Life Plan",
       role: "Click to know more",
-      image: whole,
+      image: imagesImports.whole,
       to: "/plans/planName",
     },
     {
       id: 4,
       name: "Retirement Plan",
       role: "Click to know more",
-      image: retire,
+      image: imagesImports.retire,
       to: "/plans/planName",
     },
     {
       id: 5,
       name: "Health Insurance Plan",
       role: "Click to know more",
-      image: health,
+      image: imagesImports.health,
       to: "/plans/planName",
     },
     {
       id: 6,
       name: "Money Back Plan",
       role: "Click to know more",
-      image: moneyback,
+      image: imagesImports.moneyback,
       to: "/plans/planName",
     },
     {
       id: 7,
       name: "Pure Protection",
       role: "Click to know more",
-      image: pure,
+      image: imagesImports.pure,
       to: "/plans/planName",
     },
     {
       id: 8,
       name: "ULIP Plan",
       role: "Click to know more",
-      image: ulip,
+      image: imagesImports.ulip,
       to: "/plans/planName",
     },
   ];
