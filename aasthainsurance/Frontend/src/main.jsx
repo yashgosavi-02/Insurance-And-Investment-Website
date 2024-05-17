@@ -23,6 +23,7 @@ import HealthInsurance from './components/services/HealthInsurance.jsx'
 import HomeInsurance from './components/services/HomeInsurance.jsx'
 import AutoInsurance from './components/services/AutoInsurance.jsx'
 import GeneralInsurance from './components/services/GeneralInsurance.jsx'
+import Investments from './components/services/Investments.jsx'
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx'
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="services/insurance" element={<Insurances />} />
+      <Route path="services/investments" element={<Investments />} />
       <Route path="life" element={<LifeInsurance />} />
       <Route path="health" element={<HealthInsurance />} />
       <Route path="home" element={<HomeInsurance />} />

@@ -1,77 +1,103 @@
+import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 function GetPolicy() {
   const location = useLocation();
-  const { policy } = location.state || {};
+  const { policy, insuranceType, fullName } = location.state || {};
+  const [cart, setCart] = useState({});
+  const [name, setName] = useState(fullName || "");
 
-  if (!policy) {
-    return <div>No policy selected</div>;
+  useEffect(() => {
+    if (policy && insuranceType) {
+      setCart((prevCart) => {
+        const updatedCart = { ...prevCart };
+        if (!updatedCart[insuranceType]) {
+          updatedCart[insuranceType] = [];
+        }
+        updatedCart[insuranceType].push(policy.id);
+        return updatedCart;
+      });
+    }
+  }, [policy, insuranceType]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8080/insurance/cart", cart);
+      console.log("Submission successful:", response.data);
+    } catch (error) {
+      console.error("Error submitting policies:", error);
+    }
+  };
+
+  if (!policy || !insuranceType) {
+    return <div className="text-red-500">No policy selected</div>;
   }
 
   return (
-    // <div className="p-8">
-    //   <h1 className="text-2xl font-bold mb-4">Selected Policy</h1>
-    //   <div className="bg-white shadow-md p-4 rounded-lg">
-    //     <div className="text-gray-900 font-bold text-xl mb-4">{policy.company}</div>
-    //     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 mb-4">
-    //       <div className="text-sm border p-2 rounded-md bg-gray-50">
-    //         <span className="font-semibold text-gray-700">Coverage Amount</span>
-    //         <div className="text-gray-800">
-           
-           
-    //         </div>
-    //       </div>
-    //       <div className="text-sm border p-2 rounded-md bg-gray-50">
-    //         <span className="font-semibold text-gray-700">Policy Term</span>
-    //         <div className="text-gray-800">{policy.policyTerm}</div>
-    //       </div>
-    //       <div className="text-sm border p-2 rounded-md bg-gray-50">
-    //         <span className="font-semibold text-gray-700">Medical Test</span>
-    //         <div className="text-gray-800">{policy.medicalTest}</div>
-    //       </div>
-    //       <div className="text-sm border p-2 rounded-md bg-gray-50">
-    //         <span className="font-semibold text-gray-700">Smoker Status</span>
-    //         <div className="text-gray-800">{policy.smokerStatus}</div>
-    //       </div>
-    //       <div className="text-sm border p-2 rounded-md bg-gray-50">
-    //         <span className="font-semibold text-gray-700">Gender</span>
-    //         <div className="text-gray-800">{policy.gender}</div>
-    //       </div>
-    //     </div>
-    //     <div className="text-sm border p-3 rounded-md bg-gray-50">
-    //       <ul className="list-disc pl-5 space-y-1">
-    //         <li>
-    //           <span className="font-semibold text-gray-700">Benefit 1 - </span>
-    //           <span className="text-gray-800">This is Benefit 1</span>
-    //         </li>
-    //         <li>
-    //           <span className="font-semibold text-gray-700">Benefit 2 - </span>
-    //           <span className="text-gray-800">This is Benefit 2</span>
-    //         </li>
-    //         <li>
-    //           <span className="font-semibold text-gray-700">Benefit 3 - </span>
-    //           <span className="text-gray-800">This is Benefit 3</span>
-    //         </li>
-    //       </ul>
-    //     </div>
-    //   </div>
-    // </div>
-    <>
-      <div>
-        <label>Policy ID</label>
-        <input type="text" value={policy.id} readOnly/>
+    <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
+      <div className="flex flex-wrap -mx-3 mb-6">
+        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Name</label>
+          <input 
+            type="text" 
+            value={name} 
+            onChange={(e) => setName(e.target.value)} 
+            readOnly
+            className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+          />
+        </div>
+        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Insurance Type</label>
+          <input 
+            type="text" 
+            value={insuranceType} 
+            readOnly 
+            className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+          />
+        </div>
       </div>
-      <div>
-        <label>Coverage Amount</label>
-        <input type="text" value={policy.coverageAmount} readOnly/>
+      <div className="flex flex-wrap -mx-3 mb-6">
+        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Coverage Amount</label>
+          <input 
+            type="text" 
+            value={policy.coverageAmount} 
+            readOnly 
+            className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+          />
+        </div>
+        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Policy Term (years)</label>
+          <input 
+            type="text" 
+            value={policy.policyTerm} 
+            readOnly 
+            className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+          />
+        </div>
+        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Premium (per month)</label>
+          <input 
+            type="text" 
+            value={policy.premium} 
+            readOnly 
+            className="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+          />
+        </div>
       </div>
-      <div>
-        <label>Policy Term</label>
-        <input type="text" value={policy.policyTerm} readOnly/>
+      <div className="flex ">
+        <button
+          type="submit"
+          className="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 ease-in-out hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Buy Policy
+        </button>
       </div>
-    </>
-     
+    </form>
   );
+  
 }
 
 export default GetPolicy;
