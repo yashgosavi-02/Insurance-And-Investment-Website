@@ -1,5 +1,4 @@
 import insurancesType from '../../utils/insurancesType';
-
 function InsuranceServices() {
   return (
     <section className="our-services py-8 px-4 bg-bodyC text-textC">

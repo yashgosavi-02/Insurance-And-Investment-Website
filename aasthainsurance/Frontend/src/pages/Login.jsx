@@ -9,62 +9,35 @@ function Login() {
     });
     const [errors, setErrors] = useState({});
     
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-        // Clear the error message when the user starts typing again
-        setErrors({
-            ...errors,
-            [name]: ''
-        });
-    };
+    // const handleChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFormData({
+    //         ...formData,
+    //         [name]: value
+    //     });
+    //     setErrors({
+    //         ...errors,
+    //         [name]: ''
+    //     });
+    // };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        // Client-side validation
-        let validationErrors = {};
-        if (!formData.email) {
-            validationErrors.email = "Email is required";
-        }
-        if (!formData.password) {
-            validationErrors.password = "Password is required";
-        }
-    
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-            return;
-        }
-    
         try {
-            const res = await fetch("/api/login", {
+            const res = await fetch("api/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
-            const data = await res.json();
-            console.log(data);
-            if (!res.ok) {
-                // Handle login failure
-                console.log("Login failed");
-                if (data.error) {
-                    setErrors({ general: data.error });
-                }
+            console.log(res);
+            if (res.status === 200) {
+                navigate("/about");
             } else {
-                // Redirect based on user role
-                if (data.role === 'user') {
-                    console.log("User login successful");
-                    // navigate("/user/dashboard");
-                } else if (data.role === 'admin') {
-                    console.log("Admin login successful");
-                    navigate("/admin/dashboard");
-                }
+                setErrors({ general: res.message || 'Login failed, please try again.' });
             }
         } catch (error) {
-            console.log("Error:", error);
-            setErrors({ general: "An error occurred, please try again later" });
+            // console.error('Error:', error);
+            setErrors({ general: 'An error occurred, please try again.' });
         }
     };
 
@@ -85,7 +58,7 @@ function Login() {
                             autoComplete="email"
                             required
                             value={formData.email}
-                            onChange={handleChange}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })} // handleChange
                             className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${errors.email && 'border-red-500'}`}
                         />
                         {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
@@ -100,7 +73,7 @@ function Login() {
                             autoComplete="current-password"
                             required
                             value={formData.password}
-                            onChange={handleChange}
+                            onChange={(e) => setFormData({ ...formData, password: e.target.value })} // handleChange
                             className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${errors.password && 'border-red-500'}`}
                         />
                         {errors.password && <p className="mt-1 text-xs text-red-500">{errors.password}</p>}

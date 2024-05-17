@@ -21,7 +21,7 @@ function Contact() {
     e.preventDefault();
     if (validateForm()) {
       const { name, email, tel, message } = formData;
-      const mailtoLink = `mailto:yashgosavi.cse@gmail.com?subject=New Request&body=Name: ${name}%0AEmail: ${email}%0ATelephone: ${tel}%0AMessage: ${message}`;
+      const mailtoLink = `mailto:?subject=New Request&body=Name: ${name}%0AEmail: ${email}%0ATelephone: ${tel}%0AMessage: ${message}`;
       window.location.href = mailtoLink;
       setFormData({
         name: "",

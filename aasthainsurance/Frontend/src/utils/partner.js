@@ -34,14 +34,14 @@ const partners = [
       image: imagesImports.starImg,
       link: "https://www.starhealth.in/",
       name: "Star Health",
-      additionalInfo: "Star Health & Allied Insurance Co Ltd commenced its operations in 2006 with the business interests in Health Insurance, Overseas Mediclaim Policy and Personal Accident.",
+      additionalInfo: "Star Health & Allied Insurance Co Ltd commenced its operations in Health Insurance, Overseas Mediclaim Policy and Personal Accident.",
     },
     {
       id: 6,
       image: imagesImports.hdfcImg,
       link: "https://www.hdfcergo.com/",
       name: "HDFC ERGO",
-      additionalInfo: "HDFC ERGO General Insurance Company Ltd. is a joint venture between HDFC Ltd., India’s premier Housing Finance Institution and ERGO International AG, the primary insurance entity of the Munich Re Group.",
+      additionalInfo: "HDFC ERGO General Insurance Company Ltd. is a joint venture between HDFC Ltd., India’s premier Housing Finance Institution and ERGO International AG..",
     },
 ];
 

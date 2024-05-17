@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"; // Assuming you're using React Router for navigation
-import imagesImports from "../../utils/imgImports";
+import imagesImports from "../utils/imgImports";
 function PlansCard({ name, imageUrl, role, to }) {
   return (
     <div className="max-w-xs mx-4 rounded overflow-hidden shadow-lg bg-headerC">

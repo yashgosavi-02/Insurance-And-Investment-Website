@@ -7,28 +7,11 @@ function AdminLogin() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      const response = await fetch('http://your-backend-url/authenticate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      });
-
-      if (response.ok) {
-        navigate('/admin/dashboard'); // Redirect to dashboard if login successful
-      } else {
-        alert('Invalid credentials');
-      }
-    } catch (error) {
-      console.error('Error authenticating:', error);
-      alert('An error occurred while authenticating. Please try again later.');
+    if (username === 'admin' && password === 'password') {
+      navigate('/admin/dashboard');
+    } else {
+      alert('Invalid credentials');
     }
-  };
-
-  const handleAgentRegistration = () => {
-    navigate('/admin/agent-registration');
   };
 
   return (
@@ -53,12 +36,6 @@ function AdminLogin() {
         onClick={handleLogin}
       >
         Login
-      </button>
-      <button
-        className="bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        onClick={handleAgentRegistration}
-      >
-        Agent Registration
       </button>
     </div>
   );

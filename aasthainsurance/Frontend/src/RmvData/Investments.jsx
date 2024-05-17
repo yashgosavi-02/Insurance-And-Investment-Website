@@ -1,4 +1,4 @@
-import imagesImports from "../../utils/imgImports";
+import imagesImports from "../utils/imgImports";
 function Investments() {
   return (
     <div className="py-16 bg-bodyC">

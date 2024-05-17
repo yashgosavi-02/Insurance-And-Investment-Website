@@ -7,7 +7,6 @@ const Banner = () => {
     "Welcome to Aastha",
     "Explore Our Services",
     "Secure Your Future Today",
-    "Insurance, Investment  & Financial Consulatation"
   ];
 
   useEffect(() => {

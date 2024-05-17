@@ -6,6 +6,7 @@ function SignUp() {
         userName: '',
         email: '',
         phone: '',
+        // gender: '',
         dob: '',
         password: '',
         city: '',
@@ -14,6 +15,7 @@ function SignUp() {
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -43,17 +45,34 @@ function SignUp() {
                     },
                     body: JSON.stringify(formData),
                 });
+                console.log(formData);
                 if (res.ok) {
                     console.log('Registration successful:', res.data);
-                    navigate('/userLogin');
+                    setSuccessMessage('User successfully registered.');
+                    setFormData({
+                        userName: '',
+                        email: '',
+                        phone: '',
+                        // gender: '',
+                        dob: '',
+                        password: '',
+                        city: '',
+                        state: ''
+                    });
+                    setErrors({});
+                    setErrorMessage('');
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 2000); 
+                } else {
+                    const errorData = await res.json();
+                    setErrorMessage(errorData.message || "An error occurred while submitting the form. Please try again later.");
                 }
-
             } catch (error) {
                 console.error("Error submitting form:", error);
                 setErrorMessage("An error occurred while submitting the form. Please try again later.");
             }
             setIsLoading(false);
-
         }
     };
 
@@ -82,6 +101,11 @@ function SignUp() {
             valid = false;
         }
 
+        // if (!formData.gender.trim()) {
+        //     newErrors.gender = "Gender is required";
+        //     valid = false;
+        // }
+        
         if (!formData.dob.trim()) {
             newErrors.dob = "Date of Birth is required";
             valid = false;
@@ -132,6 +156,15 @@ function SignUp() {
                         {errors.phone && <p className="text-red-500 text-xs italic">{errors.phone}</p>}
                     </div>
                     <div>
+                        <label htmlFor="gender" className="block mb-2 text-sm font-medium">Gender</label>
+                        <select id="gender" name="gender" value={formData.gender} onChange={handleChange} className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${errors.gender && 'border-red-500'}`} required>
+                            <option value="">Select Gender</option>
+                            <option value="male">male</option>
+                            <option value="female">female</option>
+                        </select>
+                        {errors.gender && <p className="text-red-500 text-xs italic">{errors.gender}</p>}
+                    </div>
+                    <div>
                         <label htmlFor="dob" className="block mb-2 text-sm font-medium">Date of Birth</label>
                         <input type="date" id="dob" name="dob" value={formData.dob} onChange={handleChange} className={`bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 ${errors.dob && 'border-red-500'}`} required />
                         {errors.dob && <p className="text-red-500 text-xs italic">{errors.dob}</p>}
@@ -157,6 +190,7 @@ function SignUp() {
                     <p className="text-sm font-light text-gray-500">
                         Already have an account? <a href="/login" className="font-medium text-primary-600 hover:underline">Login here</a>
                     </p>
+                    {successMessage && <p className="text-green-500 text-sm italic">{successMessage}</p>}
                     {errorMessage && <p className="text-red-500 text-sm italic">{errorMessage}</p>}
                 </form>
             </div>

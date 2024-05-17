@@ -22,7 +22,7 @@ export default function Header() {
             <img src={logo} alt="Logo" className="w-16 h-16" />
           </Link>
           <h2 className="text-textC text-3xl font-bold">
-            Aastha Insurance & Investments
+            Aastha Insurance
           </h2>
         </div>
         <div className="flex items-center space-x-4">
@@ -41,13 +41,7 @@ export default function Header() {
                     <Link to="services/insurance" className="text-textC" onClick={closeDropdown}>Insurance</Link>
                   </li>
                   <li>
-                    <Link to="services/investment" className="text-textC" onClick={closeDropdown}>Investment</Link>
-                  </li>
-                  <li>
                     <Link to="services/calculators" className="text-textC" onClick={closeDropdown}>Calculators</Link>
-                  </li>
-                  <li>
-                    <Link to="services/finConsultation" className="text-textC" onClick={closeDropdown}>FinConsultation</Link>
                   </li>
                 </ul>
               )}

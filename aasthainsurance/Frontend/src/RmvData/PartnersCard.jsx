@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import { useState } from 'react';
 function PartnersCard({ imageUrl, externalLink, name, additionalInfo }) {
   const [isHovered, setIsHovered] = useState(false);
   let hoverTimer;
@@ -20,7 +19,7 @@ function PartnersCard({ imageUrl, externalLink, name, additionalInfo }) {
       href={externalLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="max-w-xs h-48 rounded overflow-hidden shadow-lg flex justify-center items-center relative block"
+      className="max-w-xs h-48 rounded overflow-hidden shadow-lg flex justify-center items-center relative "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
