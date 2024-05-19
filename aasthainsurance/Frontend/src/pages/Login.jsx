@@ -44,7 +44,7 @@ function Login() {
             }
             if (res.status === 200 ) {
                 dispatch(loginSuccess(data));
-                navigate("/user/profile");
+                navigate("/");
             } 
         } catch (error) {
             // console.error('Error:', error);

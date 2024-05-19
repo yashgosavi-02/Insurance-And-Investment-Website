@@ -26,14 +26,17 @@ import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
 import TermsConditions from './components/Footer/TermsConditions.jsx';
 import GetPolicy from './GetPolicy.jsx'
 import AdminLogin from "./components/admin/AdminLogin.jsx";
-import Dashboard from "./components/admin/Dashboard.jsx";
+// import Dashboard from "./components/admin/Dashboard.jsx";
 import Endowment from "./components/services/Endowment.jsx";
 import MoneyBack from "./components/services/MoneyBack.jsx";
 import Whole from "./components/services/Whole.jsx";
 import Investments from "./components/services/Investments.jsx";
-import UserProfile from "./pages/UserProfile.jsx";
-import {store} from './redux/store.js'
+// import DashboardUser from "./components/user/DashboardUser.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import {store, persistor} from './redux/store.js'
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
@@ -76,17 +79,21 @@ const router = createBrowserRouter(
       <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
       <Route path="/getPolicy" element={<GetPolicy />} />
       <Route path='/admin' element = {<AdminLogin/>} />
-      <Route path='/admin/dashboard' element = {<Dashboard />} />
-      <Route path='/user/profile' element = {<UserProfile />} />
+      {/* <Route path='/admin/dashboard' element = {<Dashboard />} /> */}
+      <Route element={<PrivateRoute/>} >
+        <Route path='/dashboard' element={<Dashboard/>}/>
+      </Route>
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+    <PersistGate persistor={persistor} loading={null}>
     <Provider store={store}>
       <React.StrictMode>
         <RouterProvider router={router} />
       </React.StrictMode>
     </Provider>
+    </PersistGate>
 );
 

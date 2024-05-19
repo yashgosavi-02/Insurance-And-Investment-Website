@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/images/logo.png';
-import { BiSolidLogIn} from "react-icons/bi";
 import { useSelector } from "react-redux";
-
+import {Dropdown, Button, Navbar, TextInput, Avatar, DropdownDivider} from 'flowbite-react';
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const {currentUser} = useSelector((state) => state.user);
@@ -14,7 +13,6 @@ export default function Header() {
   const closeDropdown = () => {
     setIsDropdownOpen(false);
   };
-
   return (
     <header className="bg-headerC p-4 h-1/5">
       <nav className="container mx-auto flex justify-between items-center">
@@ -54,12 +52,24 @@ export default function Header() {
               <Link to="/contact" className="text-textC" onClick={closeDropdown}>Contact</Link>
             </li>
           </ul>
-          <Link to="/login" className="text-textC text-xl">
-            {currentUser ? <div className="rounded-full overflow-hidden w-20 h-20">
-    <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="user" className="w-full h-full object-cover" />
-</div>
-: <BiSolidLogIn />  }
-          </Link>
+            {currentUser ? (
+            <Dropdown
+              arrowIcon={false}
+              inline
+              label={<Avatar alt="user" rounded/>}
+            >
+              <Dropdown.Header> 
+                <span className="block text-sm">@{currentUser.userName}</span>
+                <span className="block text-sm font-medium truncate">{currentUser.email}</span>
+              </Dropdown.Header>
+              <Link to={'/dashboard?tab=profile'} className="text-textC"><Dropdown.Item>Profile</Dropdown.Item></Link> 
+              <DropdownDivider/>
+              <Dropdown.Item>Logout</Dropdown.Item>
+            </Dropdown>):  (<Link to="/login" >
+              <Button gradientDuoTone='purpleToBlue' outline>
+                  Sign In
+              </Button>
+            </Link>)}
         </div>
       </nav>
     </header>
