@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/images/logo.png';
-import { BiSolidLogIn, BiSolidLogOut } from "react-icons/bi";
+import { BiSolidLogIn} from "react-icons/bi";
 import { useSelector } from "react-redux";
 
 export default function Header() {
@@ -56,7 +56,7 @@ export default function Header() {
           </ul>
           <Link to="/login" className="text-textC text-xl">
             {currentUser ? <div className="rounded-full overflow-hidden w-20 h-20">
-    <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="user" class="w-full h-full object-cover" />
+    <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg" alt="user" className="w-full h-full object-cover" />
 </div>
 : <BiSolidLogIn />  }
           </Link>
