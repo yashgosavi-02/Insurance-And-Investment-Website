@@ -42,14 +42,14 @@ function LicPlans() {
       name: "Whole Life Plan",
       role: "Click to know more",
       image: imagesImports.whole,
-      to: "/plans/planName",
+      to: "/whole-plans",
     },
     {
       id: 3,
       name: "Money Back Plan",
       role: "Click to know more",
       image: imagesImports.moneyback,
-      to: "/plans/planName",
+      to: "/moneyback-plans",
     }
   ];
 

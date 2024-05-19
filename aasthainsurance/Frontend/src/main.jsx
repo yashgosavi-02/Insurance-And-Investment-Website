@@ -2,9 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
-import {store, persistor} from './redux/store.js';
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
 import Layout from "./Layout.jsx";
 import Home from './components/Home.jsx'
 import About from './components/About.jsx';
@@ -23,7 +20,6 @@ import HealthInsurance from './components/services/HealthInsurance.jsx'
 import HomeInsurance from './components/services/HomeInsurance.jsx'
 import AutoInsurance from './components/services/AutoInsurance.jsx'
 import GeneralInsurance from './components/services/GeneralInsurance.jsx'
-import LIC from './components/services/LIC.jsx'
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx'
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
@@ -32,6 +28,12 @@ import GetPolicy from './GetPolicy.jsx'
 import AdminLogin from "./components/admin/AdminLogin.jsx";
 import Dashboard from "./components/admin/Dashboard.jsx";
 import Endowment from "./components/services/Endowment.jsx";
+import MoneyBack from "./components/services/MoneyBack.jsx";
+import Whole from "./components/services/Whole.jsx";
+import Investments from "./components/services/Investments.jsx";
+import UserProfile from "./pages/UserProfile.jsx";
+import {store} from './redux/store.js'
+import { Provider } from "react-redux";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
@@ -39,8 +41,10 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="services/insurance" element={<Insurances />} />
-      <Route path="services/LIC" element={<LIC />} />
+      <Route path="services/investment" element={<Investments />} />
       <Route path='/endowment-plans' element={<Endowment />} />
+      <Route path='/moneyback-plans' element={<MoneyBack />} />
+      <Route path='/whole-plans' element={<Whole />} />
       <Route path="life" element={<LifeInsurance />} />
       <Route path="health" element={<HealthInsurance />} />
       <Route path="home" element={<HomeInsurance />} />
@@ -73,18 +77,16 @@ const router = createBrowserRouter(
       <Route path="/getPolicy" element={<GetPolicy />} />
       <Route path='/admin' element = {<AdminLogin/>} />
       <Route path='/admin/dashboard' element = {<Dashboard />} />
+      <Route path='/user/profile' element = {<UserProfile />} />
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <PersistGate persistor={persistor}>
     <Provider store={store}>
       <React.StrictMode>
         <RouterProvider router={router} />
       </React.StrictMode>
     </Provider>
-  </PersistGate>
-  
 );
 
