@@ -6,7 +6,7 @@ function SignUp() {
         userName: '',
         email: '',
         phone: '',
-        // gender: '',
+        gender: '',
         dob: '',
         password: '',
         city: '',
@@ -38,7 +38,7 @@ function SignUp() {
         if (validateForm()) {
             setIsLoading(true);
             try {
-                const res = await fetch('/api/register', {
+                const res = await fetch('http://localhost:8080/auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ function SignUp() {
                         userName: '',
                         email: '',
                         phone: '',
-                        // gender: '',
+                        gender: '',
                         dob: '',
                         password: '',
                         city: '',
@@ -101,10 +101,10 @@ function SignUp() {
             valid = false;
         }
 
-        // if (!formData.gender.trim()) {
-        //     newErrors.gender = "Gender is required";
-        //     valid = false;
-        // }
+        if (!formData.gender.trim()) {
+            newErrors.gender = "Gender is required";
+            valid = false;
+        }
         
         if (!formData.dob.trim()) {
             newErrors.dob = "Date of Birth is required";

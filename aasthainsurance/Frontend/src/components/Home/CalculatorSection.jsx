@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function CalCard({ name, to }) {
   return (
-    <div className="max-w-xs rounded overflow-hidden shadow-lg group bg-headerC hover:bg-bodyC">
+    <div className="max-w-xs rounded overflow-hidden shadow-lg group bg-headerC hover:bg-bodyC text-center">
       <Link to={to}>
         <div className="px-6 py-4">
           <div className="font-bold text-textC text-xl mb-2">{name}</div>

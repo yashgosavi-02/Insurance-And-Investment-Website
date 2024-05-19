@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
+import BackToTopButton from "../Home/BackToTop";
 
 function LifeInsurance() {
   const api = "http://localhost:8080";
@@ -13,6 +14,8 @@ function LifeInsurance() {
   const [smokerStatus, setSmokerStatus] = useState([]);
   const [gender, setGender] = useState([]);
   const [age, setAge] = useState([]);
+  
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +37,7 @@ function LifeInsurance() {
     };
 
     fetchData();
-  }, [policyTerm, coverageAmount, medicalTestRequired, smokerStatus, gender]);
+  }, [policyTerm, coverageAmount, medicalTestRequired, smokerStatus, gender, age]);
 
 
 const handleGetPolicy = (policy) => {
@@ -42,11 +45,36 @@ console.log("Added to cart:", policy);
 navigate('/getPolicy', { state: { policy, insuranceType : 'LIFE', fullName : '' } });
 };
    
+const handleAgeChange = (e) => {
+  const value = e.target.value;
+  if (value >= 18 && value <= 60) {
+    setAge(value);
+    setError('');
+  } else {
+    setAge(0);
+    setError('Age must be between 18 and 60.');
+  }
+};
 
   return (
+    <>
     <div className="flex p-8">
       {/* Filter Sidebar */}
-      <div className="sidebar pr-8">
+      <div className="sidebar pr-8 text-textC bg-bodyC">
+      <div className="mb-4">
+      <label className="block mb-2 font-semibold">Age</label>
+      <input
+        type="number"
+        name="age"
+        className="w-full"
+        onChange={handleAgeChange}
+        placeholder="Enter Age"
+        min="18"
+        max="60"
+        required
+      />
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+    </div>
         <div className="mb-4">
           <label className="block mb-2 font-semibold">Gender</label>
           <select name="gender" className="w-full" onChange={e => setGender(e.target.value)}>
@@ -102,11 +130,11 @@ navigate('/getPolicy', { state: { policy, insuranceType : 'LIFE', fullName : '' 
         </div>
       </div>
       {/* Policies */}
-      <div className="grid grid-cols-1 gap-6 w-full">
+      <div className="grid grid-cols-1 gap-6 w-full text-textC">
         {data.map((policy) => (
           <div
             key={policy.id}
-            className="bg-white shadow-md p-4 rounded-lg flex flex-col lg:flex-row items-stretch lg:items-center justify-between hover:shadow-lg transition-shadow duration-300"
+            className="bg-headerC shadow-md p-4 rounded-lg flex flex-col lg:flex-row items-stretch lg:items-center justify-between hover:shadow-lg transition-shadow duration-300"
           >
             <div className="flex-grow">
               <div className="text-gray-900 font-bold text-xl mb-4">{policy.company}</div>
@@ -130,6 +158,10 @@ navigate('/getPolicy', { state: { policy, insuranceType : 'LIFE', fullName : '' 
                 <div className="text-sm border p-2 rounded-md bg-gray-50">
                   <span className="font-semibold text-gray-700">Gender</span>
                   <div className="text-gray-800">{policy.gender}</div>
+                </div>
+                <div className="text-sm border p-2 rounded-md bg-gray-50">
+                  <span className="font-semibold text-gray-700">Premium</span>
+                  <div className="text-gray-800">{policy.premium}</div>
                 </div>
               </div>
               <div className="text-sm border p-3 rounded-md bg-gray-50">
@@ -156,6 +188,8 @@ navigate('/getPolicy', { state: { policy, insuranceType : 'LIFE', fullName : '' 
         ))}
       </div>
     </div>
+    <BackToTopButton/>
+    </>
   );
 }
 

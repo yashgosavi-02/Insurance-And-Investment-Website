@@ -145,7 +145,7 @@ function Contact() {
 
             <button
               type="submit"
-              className="py-3 px-6 bg-footerC hover:bg-bodyC text-textC font-semibold rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2"
+              className="py-3 px-6 bg-footerC hover:bg-headerC text-textC font-semibold rounded-lg transition duration-300 ease-in-out focus:outline-none focus:ring-2"
             >
               Submit
             </button>

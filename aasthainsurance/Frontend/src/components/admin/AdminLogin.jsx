@@ -7,6 +7,7 @@ function AdminLogin() {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    
     if (username === 'admin' && password === 'password') {
       navigate('/admin/dashboard');
     } else {

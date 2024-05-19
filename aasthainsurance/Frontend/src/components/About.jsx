@@ -1,5 +1,6 @@
 import imagesImports from '../utils/imgImports';
 import Partners from './Partners';
+import BackToTopButton from './Home/BackToTop';
 function About() {
   return (
     <>
@@ -93,6 +94,8 @@ function About() {
       </section>
       {/* Partners  */}
       <Partners />
+
+      <BackToTopButton/>
     </>
   );
 }

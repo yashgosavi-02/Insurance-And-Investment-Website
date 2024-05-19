@@ -41,7 +41,7 @@ export default function Header() {
                     <Link to="services/insurance" className="text-textC" onClick={closeDropdown}>Insurance</Link>
                   </li>
                   <li>
-                    <Link to="services/investments" className="text-textC" onClick={closeDropdown}>Investment</Link>
+                    <Link to="services/LIC" className="text-textC" onClick={closeDropdown}>LIC</Link>
                   </li>
                   <li>
                     <Link to="services/calculators" className="text-textC" onClick={closeDropdown}>Calculators</Link>

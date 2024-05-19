@@ -7,10 +7,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        headerC: '#F9F7F7',
-        bodyC: '#DBE2EF',
-        footerC: '#3F72AF',
-        textC: '#3F72AF',
+        headerC: '#FCD656',
+        bodyC: '#F1F1F1',
+        footerC: '#F21209C',
+        textC: '#23120B'
       },
       blur: {
         '90': '90%',

@@ -23,7 +23,7 @@ import HealthInsurance from './components/services/HealthInsurance.jsx'
 import HomeInsurance from './components/services/HomeInsurance.jsx'
 import AutoInsurance from './components/services/AutoInsurance.jsx'
 import GeneralInsurance from './components/services/GeneralInsurance.jsx'
-import Investments from './components/services/Investments.jsx'
+import LIC from './components/services/LIC.jsx'
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx'
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
@@ -31,6 +31,7 @@ import TermsConditions from './components/Footer/TermsConditions.jsx';
 import GetPolicy from './GetPolicy.jsx'
 import AdminLogin from "./components/admin/AdminLogin.jsx";
 import Dashboard from "./components/admin/Dashboard.jsx";
+import Endowment from "./components/services/Endowment.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
@@ -38,7 +39,8 @@ const router = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="services/insurance" element={<Insurances />} />
-      <Route path="services/investments" element={<Investments />} />
+      <Route path="services/LIC" element={<LIC />} />
+      <Route path='/endowment-plans' element={<Endowment />} />
       <Route path="life" element={<LifeInsurance />} />
       <Route path="health" element={<HealthInsurance />} />
       <Route path="home" element={<HomeInsurance />} />

@@ -1,5 +1,6 @@
 import imagesImports from "../../utils/imgImports";
-function Investments() {
+import LicPlans from "./LicPlans";
+function LIC() {
   return (
     <div className="py-16 bg-bodyC">
       <div className="container mx-auto px-6 text-textC md:px-12 xl:px-6">
@@ -32,9 +33,10 @@ function Investments() {
             </p>
           </div>
         </div>
+        <LicPlans/>
       </div>
     </div>
   );
 }
 
-export default Investments;
+export default LIC;

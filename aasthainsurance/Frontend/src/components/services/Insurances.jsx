@@ -14,7 +14,7 @@ function Card({ title, img, desc, linktopage }) {
       <div className="px-6 pt-4 pb-2">
         <Link
           to={linktopage}
-          className="inline-block bg-footerC text-headerC rounded-full px-3 py-1 text-sm font-semibold hover:bg-headerC  hover:text-textC mr-2 mb-2"
+          className="inline-block bg-textC text-headerC rounded-full px-3 py-1 text-sm font-semibold hover:bg-headerC  hover:text-textC mr-2 mb-2"
         >
           Know More
         </Link>
