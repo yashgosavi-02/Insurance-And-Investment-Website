@@ -22,7 +22,6 @@ import SignUp from './pages/SignUp.jsx';
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
 import TermsConditions from './components/Footer/TermsConditions.jsx';
 import GetPolicy from './GetPolicy.jsx';
-import AdminLogin from "./components/admin/AdminLogin.jsx";
 import Endowment from "./components/services/Endowment.jsx";
 import MoneyBack from "./components/services/MoneyBack.jsx";
 import Whole from "./components/services/Whole.jsx";
@@ -59,7 +58,6 @@ const router = createBrowserRouter(
       <Route path="/terms-conditions" element={<TermsConditions/>} />
       <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
       <Route path="/getPolicy" element={<GetPolicy />} />
-      <Route path='/admin' element = {<AdminLogin/>} />
       <Route element={<PrivateRoute/>} >
         <Route path='/dashboard' element={<Dashboard/>}/>
       </Route>
