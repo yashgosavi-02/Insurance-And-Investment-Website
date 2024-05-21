@@ -1,15 +1,34 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/images/logo.png';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {Dropdown, Button, Navbar, TextInput, Avatar, DropdownDivider} from 'flowbite-react';
+import { signoutSuccess } from "../redux/user/userSlice";
 export default function Header() {
+  const api = "http://localhost:8080";
+  const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const {currentUser} = useSelector((state) => state.user);
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-
+  const handleSignOut = async () => {
+    try {
+      const res = await fetch(`${api}/auth/logout`, {
+        method: 'POST',
+      });
+      const data = await res.json();
+      console.log(data)
+      if (!res.ok) {
+        console.log(data.message);
+        console.log("Logout failed");
+      } else {
+        dispatch(signoutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   const closeDropdown = () => {
     setIsDropdownOpen(false);
   };
@@ -64,7 +83,7 @@ export default function Header() {
               </Dropdown.Header>
               <Link to={'/dashboard?tab=profile'} className="text-textC"><Dropdown.Item>Profile</Dropdown.Item></Link> 
               <DropdownDivider/>
-              <Dropdown.Item>Logout</Dropdown.Item>
+              <Dropdown.Item onClick={handleSignOut}>Logout</Dropdown.Item>
             </Dropdown>):  (<Link to="/login" >
               <Button gradientDuoTone='purpleToBlue' outline>
                   Sign In

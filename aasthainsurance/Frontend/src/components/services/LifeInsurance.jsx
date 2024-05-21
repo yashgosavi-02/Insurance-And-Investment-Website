@@ -3,9 +3,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaCartArrowDown } from "react-icons/fa";
 import BackToTopButton from "../Home/BackToTop";
+import { useSelector } from "react-redux";
 
 function LifeInsurance() {
   const api = "http://localhost:8080";
+  const {currentUser} = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [policyTerm, setPolicyTerm] = useState([]);
@@ -42,7 +44,7 @@ function LifeInsurance() {
 
 const handleGetPolicy = (policy) => {
 console.log("Added to cart:", policy);
-navigate('/getPolicy', { state: { policy, insuranceType : 'LIFE', fullName : '' } });
+navigate('/getPolicy', { state: { policy, insuranceType : 'LIFE', fullName : currentUser.userName } });
 };
    
 const handleAgeChange = (e) => {
