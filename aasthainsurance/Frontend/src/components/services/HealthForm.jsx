@@ -1,14 +1,9 @@
 import { Button, TextInput } from 'flowbite-react';
-import { useState } from 'react';
 
 const HealthForm = () => {
-  const [age, setAge] = useState('');
-  const [gender, setGender] = useState('all');
-  const [policyTerm, setPolicyTerm] = useState('');
-  const [coverageAmount, setCoverageAmount] = useState('');
-  const [chronicDisease, setChronicDisease] = useState('');
 
   return (
+    <form action="">
     <div className="bg-white rounded-lg shadow-md p-8">
       <div className="mb-6">
         <label className="block mb-2 font-semibold">Company</label>
@@ -93,6 +88,7 @@ const HealthForm = () => {
         Add
       </Button>
     </div>
+    </form>
   );
 };
 

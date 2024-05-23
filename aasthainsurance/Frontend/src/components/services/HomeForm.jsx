@@ -1,14 +1,9 @@
 import { Button, TextInput } from 'flowbite-react';
-import { useState } from 'react';
+
 
 const HomeForm = () => {
-  const [houseAge, setHouseAge] = useState('');
-  const [gender, setGender] = useState('');
-  const [policyTerm, setPolicyTerm] = useState('');
-  const [houseValue, setHouseValue] = useState('');
-  const [householdItemsValue, setHouseholdItemsValue] = useState('');
-
   return (
+    <form action="">
     <div className="bg-white rounded-lg shadow-md p-8">
       <div className="mb-6">
         <label className="block mb-2 font-semibold">Company</label>
@@ -93,6 +88,7 @@ const HomeForm = () => {
         Add
       </Button>
     </div>
+    </form>
   );
 };
 

@@ -13,18 +13,6 @@ function Login() {
         password: ''
     });
     const [errors, setErrors] = useState({});
-    
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({
-    //         ...formData,
-    //         [name]: value
-    //     });
-    //     setErrors({
-    //         ...errors,
-    //         [name]: ''
-    //     });
-    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -47,7 +35,6 @@ function Login() {
                 navigate("/");
             } 
         } catch (error) {
-            // console.error('Error:', error);
             dispatch(loginFailure('Something went wrong. Please try again.'));
         }
     };
