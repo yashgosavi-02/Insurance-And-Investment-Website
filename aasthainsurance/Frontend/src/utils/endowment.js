@@ -1,8 +1,6 @@
 const endowment = [
     {
       "name": "LIC's Bima Jyoti",
-      "code": 860,
-      "uino": "512N339V02",
       "description": "LIC Bima Jyoti is a Non-Linked, Non-Participating, Individual, Life Assurance Savings Plan which offers an attractive combination of protection and savings. This plan provides financial support for the family in case of unfortunate death of the policyholders during the policy term and guaranteed lumpsum payment to the surviving policyholder at the time of maturity. This plan also takes care of liquidity needs through loan facility.",
       "details": {
         "minimum_basic_sum_assured": "Rs. 1,00,000",
@@ -16,8 +14,6 @@ const endowment = [
     },
     {
       "name": "LIC's Dhan Sanchay",
-      "code": 865,
-      "uino": "512N346V01",
       "description": "LIC Dhan Sanchay is a Non-Linked, Non-Participating, Individual, Savings, Life Insurance Plan which offers a combination of protection and savings. This plan provides financial support to the family in case of unfortunate death of the life assured during the policy term. It also provides guaranteed income stream during the Payout Period from the date of maturity.",
       "details": {
         "minimum_basic_sum_assured": "Rs. 3,30,000",
@@ -31,8 +27,6 @@ const endowment = [
     },
     {
       "name": "LIC's Jeevan Azad",
-      "code": 868,
-      "uino": "512N348V01",
       "description": "LIC Jeevan Azad is a Non-Linked, Non-Participating, Individual, Savings, Life Insurance plan which offers a combination of protection and savings. This is a Limited Premium Payment Endowment plan which provides financial support for the family in case of unfortunate death of the life assured during the policy term and also takes care of liquidity needs through loan facility. It also provides guaranteed lumpsum amount to the surviving life assured on the date of maturity.",
       "details": {
         "minimum_basic_sum_assured": "Rs. 2,00,000",
@@ -46,8 +40,6 @@ const endowment = [
     },
     {
       "name": "LIC's New Endowment Plan",
-      "code": 914,
-      "uino": "512N277V02",
       "description": "LIC New Endowment Plan is a Non-linked, Participating, Individual, Life Assurance plan which offers an attractive combination of protection and saving features. This combination provides financial support for the family of the deceased policyholder any time before maturity and good lump sum amount at the time of maturity for the surviving policyholders. This plan also takes care of liquidity needs through its loan facility.",
       "details": {
         "minimum_basic_sum_assured": "Rs. 1,00,000",
@@ -59,8 +51,6 @@ const endowment = [
     },
     {
       "name": "LIC's Single Premium Endowment Plan",
-      "code": 917,
-      "uino": "512N283V02",
       "description": "LIC Single Premium Endowment Plan is a Non linked, Participating, Individual, Life Assurance, savings plan which offers an attractive combination of savings and protection features. The premium is paid in lump sum at the outset of the policy. This combination provides financial protection against death during the policy term with the provision of payment of lumpsum at the end of the selected policy term in case of his/her survival. This plan also takes care of liquidity needs through its loan facility.",
       "details": {
         "minimum_basic_sum_assured": "Rs. 50,000",

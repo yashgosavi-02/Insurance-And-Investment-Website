@@ -5,6 +5,7 @@ import WhyChooseUs from "./Home/WhyChooseUs";
 import InsuranceServices from "./Home/InsuranceServices";
 import Banner from "./Banner.jsx";
 import BackToTopButton from "./Home/BackToTop.jsx";
+import Contact from './Contact.jsx';
 const Home = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const Home = () => {
     <Stats/>
     <InsuranceServices/>
     <CalculatorSection/>
+    <Contact/>
     <BackToTopButton/>
     </>
   );

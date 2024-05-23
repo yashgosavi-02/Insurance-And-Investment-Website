@@ -12,7 +12,6 @@ import {
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
 import profile from '../assets/images/profile.jpg';
 export default function DashProfile() {
   const api = "http://localhost:8080"
@@ -140,17 +139,6 @@ export default function DashProfile() {
         >
           {loading ? 'Loading...' : 'Update'}
         </Button>
-        {currentUser.roles[0].name === "ROLE_ADMIN" && (
-          <Link to={'/addPolicy'}>
-            <Button
-              type='button'
-              gradientDuoTone='purpleToPink'
-              className='w-full'
-            >
-              Add Policy
-            </Button>
-          </Link>
-        )}
       </form>
       <div className='text-red-500 flex justify-between mt-5'>
         {currentUser.roles[0].name === "ROLE_USER" && (

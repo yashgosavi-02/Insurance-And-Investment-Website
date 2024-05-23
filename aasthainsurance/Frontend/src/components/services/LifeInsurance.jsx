@@ -62,6 +62,7 @@ const handleAgeChange = (e) => {
   }
 };
 
+
   return (
     <>
     <div className="flex p-8">

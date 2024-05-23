@@ -26,11 +26,7 @@ import Whole from "./components/services/Whole.jsx";
 import Investments from "./components/services/Investments.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Dashboard from "./components/Dashboard.jsx";
-import AddPolicy from './components/AddPolicy.jsx';
 import AdminPrivateRoute from "./components/AdminPrivateRoute.jsx";
-import LifeForm from './components/services/LifeForm.jsx';
-import HealthForm from './components/services/HealthForm.jsx';
-import HomeForm from './components/services/HomeForm.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
@@ -62,10 +58,6 @@ const router = createBrowserRouter(
         <Route path="/getPolicy" element={<GetPolicy />}/>
       </Route>
       <Route element={<AdminPrivateRoute/>} >
-        <Route path='/addPolicy' element={<AddPolicy/>}/>
-        <Route path='/lifeForm' element={<LifeForm/>}/>
-        <Route path='/healthForm' element={<HealthForm/>}/>
-        <Route path='/homeForm' element={<HomeForm/>}/>
       </Route>
 
     </Route>
@@ -74,7 +66,9 @@ const router = createBrowserRouter(
 
 const App = () => {
   return (
-    <RouterProvider router={router} />
+ 
+      <RouterProvider router={router} />
+    
   );
 };
 

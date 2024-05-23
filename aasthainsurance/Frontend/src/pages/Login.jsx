@@ -32,7 +32,7 @@ function Login() {
             }
             if (res.status === 200 ) {
                 dispatch(loginSuccess(data));
-                navigate("/");
+                navigate("/dashboard?tab=profile");
             } 
         } catch (error) {
             dispatch(loginFailure('Something went wrong. Please try again.'));

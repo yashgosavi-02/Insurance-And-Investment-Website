@@ -16,7 +16,7 @@ function Card({ title, img, desc, linktopage }) {
           to={linktopage}
           className="inline-block bg-textC text-headerC rounded-full px-3 py-1 text-sm font-semibold hover:bg-headerC  hover:text-textC mr-2 mb-2"
         >
-          Know More
+          FIND POLICY
         </Link>
       </div>
     </div>

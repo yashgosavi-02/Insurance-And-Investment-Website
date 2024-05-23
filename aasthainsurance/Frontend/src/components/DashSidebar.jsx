@@ -51,9 +51,38 @@ function DashSidebar() {
               Profile
             </Sidebar.Item>
           </Link>
+          
+          {currentUser.roles[0].name === "ROLE_ADMIN" && (
+            <>
+          <Link to='/dashboard?tab=life'>
+          <Sidebar.Item className="cursor-pointer" active={tab === "life" }>
+            LIFE INSURANCE
+          </Sidebar.Item>
+          </Link>
+                    
+          <Link to='/dashboard?tab=health'>
+          <Sidebar.Item className="cursor-pointer" active={tab === "health"}>
+            HEALTH INSURANCE
+          </Sidebar.Item>
+          </Link>
+        
+          <Link to='/dashboard?tab=home'>
+          <Sidebar.Item className="cursor-pointer" active={tab === "home"}>
+            HOME INSURANCE
+          </Sidebar.Item>
+          </Link>
+
+          <Link to='/dashboard?tab=users'>
+          <Sidebar.Item className="cursor-pointer" active={tab === "users"}>
+            USERS
+          </Sidebar.Item>
+          </Link>
+          </>
+          )}
           <Sidebar.Item icon={HiArrowSmRight} className="cursor-pointer" onClick={handleSignOut}>
             Sign Out
           </Sidebar.Item>
+
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>
