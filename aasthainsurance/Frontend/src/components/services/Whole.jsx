@@ -1,6 +1,4 @@
-import React from 'react';
-import whole from '../../utils/whole';// Ensure the endowment data is imported correctly
-
+import whole from '../../utils/whole';
 const Whole = () => {
     return (
         <div className="App">

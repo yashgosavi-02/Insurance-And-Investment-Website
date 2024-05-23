@@ -35,8 +35,12 @@ function HomeInsurance() {
 
   const handleGetPolicy = (policy) => {
     console.log("Added to cart:", policy);
-    navigate('/getPolicy', { state: { policy, insuranceType : 'Home', fullName : currentUser.userName } });
-  };
+    if(currentUser !== null) {
+    navigate('/getPolicy', { state: { policy, insuranceType : 'HOME', fullName : currentUser.userName } });
+    }else{
+      navigate('/login');
+    }
+    };
 
   const handleAgeChange = (e) => {
     const value = e.target.value;

@@ -15,8 +15,6 @@ import Partners from './components/Partners.jsx';
 import LifeInsurance from './components/services/LifeInsurance.jsx';
 import HealthInsurance from './components/services/HealthInsurance.jsx';
 import HomeInsurance from './components/services/HomeInsurance.jsx';
-import AutoInsurance from './components/services/AutoInsurance.jsx';
-import GeneralInsurance from './components/services/GeneralInsurance.jsx';
 import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
@@ -28,7 +26,11 @@ import Whole from "./components/services/Whole.jsx";
 import Investments from "./components/services/Investments.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Dashboard from "./components/Dashboard.jsx";
-
+import AddPolicy from './components/AddPolicy.jsx';
+import AdminPrivateRoute from "./components/AdminPrivateRoute.jsx";
+import LifeForm from './components/services/LifeForm.jsx';
+import HealthForm from './components/services/HealthForm.jsx';
+import HomeForm from './components/services/HomeForm.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="" element={<Layout />}>
@@ -43,8 +45,6 @@ const router = createBrowserRouter(
       <Route path="life" element={<LifeInsurance />} />
       <Route path="health" element={<HealthInsurance />} />
       <Route path="home" element={<HomeInsurance />} />
-      <Route path="auto" element={<AutoInsurance />} />
-      <Route path="general" element={<GeneralInsurance />} />
       <Route path="services/calculators" element={<Calculators />} />
       <Route path="/partners" element={<Partners />} />
       <Route path="/calculator/sip-calculator" element={<SIPCalculator />} />
@@ -57,10 +57,17 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login/>}/>
       <Route path="/terms-conditions" element={<TermsConditions/>} />
       <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
-      <Route path="/getPolicy" element={<GetPolicy />} />
       <Route element={<PrivateRoute/>} >
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path="/getPolicy" element={<GetPolicy />}/>
       </Route>
+      <Route element={<AdminPrivateRoute/>} >
+        <Route path='/addPolicy' element={<AddPolicy/>}/>
+        <Route path='/lifeForm' element={<LifeForm/>}/>
+        <Route path='/healthForm' element={<HealthForm/>}/>
+        <Route path='/homeForm' element={<HomeForm/>}/>
+      </Route>
+
     </Route>
   )
 );

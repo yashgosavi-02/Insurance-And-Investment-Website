@@ -44,7 +44,11 @@ function LifeInsurance() {
 
 const handleGetPolicy = (policy) => {
 console.log("Added to cart:", policy);
+if(currentUser !== null) {
 navigate('/getPolicy', { state: { policy, insuranceType : 'LIFE', fullName : currentUser.userName } });
+}else{
+  navigate('/login');
+}
 };
    
 const handleAgeChange = (e) => {

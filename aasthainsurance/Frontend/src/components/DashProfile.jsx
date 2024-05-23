@@ -64,10 +64,15 @@ export default function DashProfile() {
     }
   };
   const handleDeleteUser = async () => {
+    if (currentUser.roles[0] === "ROLE_USER") {
+      console.log("User does not have permission to delete.");
+      return;
+    }
+  
     setShowModal(false);
     try {
       dispatch(deleteUserStart());
-      const res = await fetch(`${api}/user/delete`, {
+      const res = await fetch(`${api}/user/delete/${currentUser.userId}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -80,6 +85,7 @@ export default function DashProfile() {
       dispatch(deleteUserFailure(error.message));
     }
   };
+  
 
   const handleSignout = async () => {
     try {
@@ -135,7 +141,7 @@ export default function DashProfile() {
           {loading ? 'Loading...' : 'Update'}
         </Button>
         {currentUser.roles[0].name === "ROLE_ADMIN" && (
-          <Link to={'/'}>
+          <Link to={'/addPolicy'}>
             <Button
               type='button'
               gradientDuoTone='purpleToPink'
@@ -147,9 +153,11 @@ export default function DashProfile() {
         )}
       </form>
       <div className='text-red-500 flex justify-between mt-5'>
-        <span onClick={() => setShowModal(true)} className='cursor-pointer'>
-          Delete Account
-        </span>
+        {currentUser.roles[0].name === "ROLE_USER" && (
+            <span onClick={() => setShowModal(true)} className='cursor-pointer'>
+            Delete Account
+          </span>
+        )}
         <span onClick={handleSignout} className='cursor-pointer'>
           Sign Out
         </span>
