@@ -11,7 +11,7 @@ function About() {
             <div className="md:w-1/2 lg:w-1/2">
               <img
                 className="w-full"
-                src={imagesImports.pure}
+                src={imagesImports.about}
                 alt="company-image"
               />
             </div>

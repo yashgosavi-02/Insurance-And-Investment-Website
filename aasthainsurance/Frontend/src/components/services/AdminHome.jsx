@@ -8,6 +8,7 @@ function AdminHome() {
   const [data, setData] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedPolicy, setSelectedPolicy] = useState(null);
   const [formValues, setFormValues] = useState({
     company: "",
@@ -53,13 +54,18 @@ function AdminHome() {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleDelete = async (policy) => {
+  const handleDeleteClick = (policy) => {
+    setSelectedPolicy(policy);
+    setShowDeleteModal(true);
+  };
+
+  const handleDelete = async () => {
     try {
       const res = await axios.delete(
-        `${api}/api/insurance/home/get/${policy.id}`
+        `${api}/api/insurance/home/get/${selectedPolicy.id}`
       );
       setData(res.data);
-      setShowEditModal(false);
+      setShowDeleteModal(false);
     } catch (error) {
       console.error("Error deleting policy: ", error);
     }
@@ -93,7 +99,7 @@ function AdminHome() {
 
   return (
     <div>
-      <div className="flex pl-20 py-2">
+      <div className="px-12 py-2">
         <button
           onClick={handleAddClick}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -101,6 +107,17 @@ function AdminHome() {
           Add Policy
         </button>
       </div>
+      {/* <div className="px-12 py-2">
+       <select name="company">
+        <option value="">ALL</option>
+        <option value="HDFC ERGO">HDFC ERGO</option>
+        <option value="LIC">LIC</option>
+        <option value="Oriental Insurance">Oriental Insurance</option>
+        <option value="ICICI Lombard">ICICI Lombard</option>
+        <option value="TATA AIA">TATA AIA</option>
+        <option value="STAR Insurance">STAR Insurance</option>
+       </select>
+      </div> */}
 
       <div className="overflow-x-auto pl-20">
         <table className="min-w-full bg-white border border-gray-300">
@@ -134,7 +151,7 @@ function AdminHome() {
                   </button>
                   <button
                     className="hover:bg-red-500 p-2 rounded-full transition-colors duration-200"
-                    onClick={() => handleDelete(policy)}
+                    onClick={() => handleDeleteClick(policy)}
                   >
                     <AiTwotoneDelete />
                   </button>
@@ -231,6 +248,7 @@ function AdminHome() {
           </div>
         </div>
       )}
+
       {showAddModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-4 rounded-lg shadow-lg">
@@ -355,6 +373,31 @@ function AdminHome() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showDeleteModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-4 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Confirm Delete</h2>
+            <p>Are you sure you want to delete this policy?</p>
+            <div className="flex justify-end mt-4">
+              <button
+                type="button"
+                onClick={() => setShowDeleteModal(false)}
+                className="mr-2 border-2 border-blue-500 p-1 rounded-md"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="border-2 border-red-500 p-1 rounded-md"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       )}

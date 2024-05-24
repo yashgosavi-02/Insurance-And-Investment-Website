@@ -1,25 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 function GetPolicy() {
   const location = useLocation();
   const { policy, insuranceType, fullName } = location.state || {};
-  const [cart, setCart] = useState({});
   const [name, setName] = useState(fullName || "");
-
-  useEffect(() => {
-    if (policy && insuranceType) {
-      setCart((prevCart) => {
-        const updatedCart = { ...prevCart };
-        if (!updatedCart[insuranceType]) {
-          updatedCart[insuranceType] = [];
-        }
-        updatedCart[insuranceType].push(policy.id);
-        return updatedCart;
-      });
-    }
-  }, [policy, insuranceType]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,9 +17,6 @@ function GetPolicy() {
     }
   };
 
-  if (!policy || !insuranceType) {
-    return <div className="text-red-500">No policy selected</div>;
-  }
 
   return (
     <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">

@@ -8,7 +8,9 @@ function AdminHealth() {
   const [data, setData] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedPolicy, setSelectedPolicy] = useState(null);
+  const [policyToDelete, setPolicyToDelete] = useState(null);
   const [formValues, setFormValues] = useState({
     company: "",
     coverageAmount: "",
@@ -55,13 +57,18 @@ function AdminHealth() {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleDelete = async (policy) => {
+  const handleDeleteClick = (policy) => {
+    setPolicyToDelete(policy);
+    setShowDeleteModal(true);
+  };
+
+  const handleDeleteConfirm = async () => {
     try {
       const res = await axios.delete(
-        `${api}/api/insurance/health/get/${policy.id}`
+        `${api}/api/insurance/health/get/${policyToDelete.id}`
       );
       setData(res.data);
-      setShowEditModal(false);
+      setShowDeleteModal(false);
     } catch (error) {
       console.error("Error deleting policy: ", error);
     }
@@ -95,7 +102,7 @@ function AdminHealth() {
 
   return (
     <div>
-      <div className="flex pl-20 py-2">
+      <div className="px-12 py-2">
         <button
           onClick={handleAddClick}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -103,6 +110,17 @@ function AdminHealth() {
           Add Policy
         </button>
       </div>
+      {/* <div className="px-12 py-2">
+       <select name="company">
+        <option value="">ALL</option>
+        <option value="HDFC ERGO">HDFC ERGO</option>
+        <option value="LIC">LIC</option>
+        <option value="Oriental Insurance">Oriental Insurance</option>
+        <option value="ICICI Lombard">ICICI Lombard</option>
+        <option value="TATA AIA">TATA AIA</option>
+        <option value="STAR Insurance">STAR Insurance</option>
+       </select>
+      </div> */}
 
       <div className="overflow-x-auto pl-20">
         <table className="min-w-full bg-white border border-gray-300">
@@ -138,7 +156,7 @@ function AdminHealth() {
                   </button>
                   <button
                     className="hover:bg-red-500 p-2 rounded-full transition-colors duration-200"
-                    onClick={() => handleDelete(policy)}
+                    onClick={() => handleDeleteClick(policy)}
                   >
                     <AiTwotoneDelete />
                   </button>
@@ -369,6 +387,30 @@ function AdminHealth() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+      {showDeleteModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-4 rounded-lg shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Confirm Deletion</h2>
+            <p>Are you sure you want to delete the policy {policyToDelete.company}?</p>
+            <div className="flex justify-end mt-4">
+              <button
+                type="button"
+                onClick={() => setShowDeleteModal(false)}
+                className="mr-2 border-2 border-blue-500 p-1 rounded-md"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteConfirm}
+                className="border-2 border-red-500 p-1 rounded-md"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       )}

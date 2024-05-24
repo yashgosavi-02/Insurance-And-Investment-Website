@@ -20,7 +20,7 @@ function PlansCard({ name, imageUrl, role, to }) {
         </div>
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 text-center text-textC">{name}</div>
-          <p className="text-base text-footerC font-normal text-center">
+          <p className="text-base text-textC font-normal text-center">
             {role}
           </p>
         </div>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from '../assets/images/logo.png';
+// import logo from '../assets/images/logo.png';
 import { useSelector, useDispatch } from "react-redux";
-import {Dropdown, Button, Navbar, TextInput, Avatar, DropdownDivider} from 'flowbite-react';
+import {Dropdown, Button, Avatar, DropdownDivider} from 'flowbite-react';
 import { signoutSuccess } from "../redux/user/userSlice";
 export default function Header() {
   const api = "http://localhost:8080";
@@ -36,11 +36,12 @@ export default function Header() {
     <header className="bg-headerC p-4 h-1/5">
       <nav className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <Link to="/">
+          {/* <Link to="/">
             <img src={logo} alt="Logo" className="w-16 h-16" />
-          </Link>
+          </Link> */}
+
           <h2 className="text-textC text-3xl font-bold">
-            Aastha Insurance
+            Aastha Insurance & Investment
           </h2>
         </div>
         <div className="flex items-center space-x-4">
