@@ -6,9 +6,7 @@ function Contact() {
     tel: "",
     message: "",
   });
-
   const [errors, setErrors] = useState({});
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -31,7 +29,6 @@ function Contact() {
       });
     }
   };
-
   const validateForm = () => {
     let valid = true;
     let newErrors = {};
@@ -170,3 +167,6 @@ function Contact() {
 }
 
 export default Contact;
+
+
+

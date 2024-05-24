@@ -10,6 +10,7 @@ function AdminHome() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedPolicy, setSelectedPolicy] = useState(null);
+  const [com , setcom] = useState("all")
   const [formValues, setFormValues] = useState({
     company: "",
     householdItemsValue: "",
@@ -86,6 +87,19 @@ function AdminHome() {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`${api}/api/insurance/home/filter/${com}`);
+        setData(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, [com]);
+
   const handleAddSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -107,17 +121,20 @@ function AdminHome() {
           Add Policy
         </button>
       </div>
-      {/* <div className="px-12 py-2">
-       <select name="company">
-        <option value="">ALL</option>
+      <div className="px-12 py-2">
+       <select name="company" onChange={(e)=>
+        {
+          setcom(e.target.value)
+        }
+       }>
+        <option value="all">ALL</option>
         <option value="HDFC ERGO">HDFC ERGO</option>
-        <option value="LIC">LIC</option>
         <option value="Oriental Insurance">Oriental Insurance</option>
         <option value="ICICI Lombard">ICICI Lombard</option>
         <option value="TATA AIA">TATA AIA</option>
         <option value="STAR Insurance">STAR Insurance</option>
        </select>
-      </div> */}
+      </div>
 
       <div className="overflow-x-auto pl-20">
         <table className="min-w-full bg-white border border-gray-300">
