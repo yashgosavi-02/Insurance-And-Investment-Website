@@ -1,4 +1,3 @@
-import React from 'react';
 import moneyBack from '../../utils/moneyBack';
 
 const MoneyBack = () => {
