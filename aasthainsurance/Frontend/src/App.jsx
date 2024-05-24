@@ -19,7 +19,7 @@ import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import PrivacyPolicy from "./components/Footer/PrivacyPolicy.jsx";
 import TermsConditions from './components/Footer/TermsConditions.jsx';
-import GetPolicy from './GetPolicy.jsx';
+import GetPolicy from './pages/GetPolicy.jsx'
 import Endowment from "./components/services/Endowment.jsx";
 import MoneyBack from "./components/services/MoneyBack.jsx";
 import Whole from "./components/services/Whole.jsx";
