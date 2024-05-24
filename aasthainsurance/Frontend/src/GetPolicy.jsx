@@ -10,7 +10,7 @@ function GetPolicy() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/insurance/cart", cart);
+      const response = await axios.post("http://localhost:8080/insurance/cart");
       console.log("Submission successful:", response.data);
     } catch (error) {
       console.error("Error submitting policies:", error);
