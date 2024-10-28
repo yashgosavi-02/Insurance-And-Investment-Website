@@ -18,16 +18,6 @@ This Insurance and Investment Website is a digital platform developed for a loca
   - **Chart.js** and **react-chartjs-2** for data visualization
   - **PrimeReact** for a rich set of UI components
 
-### Backend
-- **Java Spring Boot** for backend logic
-- **MySQL** as the relational database
-- **Hibernate** as the ORM framework
-- Additional Libraries:
-  - **Spring Security** for authentication and authorization
-  - **Spring Data JPA** for database interactions
-  - **Thymeleaf** for server-side templating
-  - **Spring Mail** for sending email notifications
-
 ## Installation and Setup
 
 ### Prerequisites
@@ -51,23 +41,9 @@ This Insurance and Investment Website is a digital platform developed for a loca
     npm run dev
     ```
 
-## Backend Setup
-1. In the backend directory, set up the database configuration in application.properties
-``` 
-spring.datasource.url=jdbc:mysql://localhost:3306/insurance_investment
-spring.datasource.username=<your_mysql_username>
-spring.datasource.password=<your_mysql_password>
-```
-
-2. Build and Run the Backend Server
-```
-mvn spring-boot:run
-```
-
-
 ## Usage
 - Access the frontend via the local development server (usually http://localhost:3000).
-- The backend API runs on a different port (e.g., http://localhost:8080), handling requests for financial calculations, user management, and policy filtering.
+
 
 ## Future Enhancements
 - Adding advanced analytics for users to visualize their policy performance
@@ -78,4 +54,4 @@ mvn spring-boot:run
 - Feel free to fork the repository, make changes, and submit a pull request. Ensure - that all code follows the coding standards and passes linting checks.
 
 ## Contact
-For questions or further information, please free to raise issue.
+For questions or further information, please free to reach out to https://www.github.com/aadcode or https://www.github.com/yash-gosavi02
