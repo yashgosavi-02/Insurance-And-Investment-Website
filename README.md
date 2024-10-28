@@ -54,4 +54,4 @@ This Insurance and Investment Website is a digital platform developed for a loca
 - Feel free to fork the repository, make changes, and submit a pull request. Ensure - that all code follows the coding standards and passes linting checks.
 
 ## Contact
-For questions or further information, please free to reach out to https://www.github.com/aadcode or https://www.github.com/yash-gosavi02
+For questions or further information, please free to reach out to https://www.github.com/aadcode or https://www.github.com/yashgosavi-02
